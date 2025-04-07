@@ -1,14 +1,14 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('contactForm');
     const inputs = form.querySelectorAll('input, textarea');
 
     // 为所有输入框添加动画效果
     inputs.forEach(input => {
-        input.addEventListener('focus', function() {
+        input.addEventListener('focus', function () {
             this.parentElement.classList.add('active');
         });
 
-        input.addEventListener('blur', function() {
+        input.addEventListener('blur', function () {
             if (!this.value) {
                 this.parentElement.classList.remove('active');
             }

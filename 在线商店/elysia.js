@@ -1,24 +1,45 @@
 const products = [
-    { 
-        id: 1, 
-        name: '精品咖啡杯', 
-        price: 99,
-        description: '优质陶瓷，保温效果好',
-        link: 'https://24h.pchome.com.tw/search/?q=%E5%92%96%E5%95%A1%E6%9D%AF'
+    {
+        id: 1,
+        name: '阿帕奇武装直升机',
+        price: 680000000,
+        description: '先进的武装直升机，配备30毫米机炮和各类导弹',
+        link: 'https://www.boeing.com/defense/ah-64-apache/'
     },
-    { 
-        id: 2, 
-        name: '时尚双肩包', 
-        price: 199,
-        description: '大容量，防水面料',
-        link: 'https://www.bing.com/shop/productpage?q=%e6%97%b6%e5%b0%9a%e5%8f%8c%e8%82%a9%e5%8c%85&filters=scenario%3a%2217%22+gType%3a%2212%22+gId%3a%2260078323678%22+gIdHash%3a%220%22+gGlobalOfferIds%3a%2260078323678%22+AucContextGuid%3a%220%22+GroupEntityId%3a%2260078323678%22+NonSponsoredOffer%3a%22True%22&productpage=true&FORM=SHPPDP&browse=true'
+    {
+        id: 2,
+        name: 'ViaSat-3美洲星',
+        price: 2400000000,
+        description: '高通量通信卫星，单星容量超1Tbps',
+        link: 'https://www.viasat.com/space-innovation/satellite-fleet/viasat-3/'
     },
-    { 
-        id: 3, 
-        name: '无线耳机', 
-        price: 299,
-        description: '高音质，续航持久',
-        link: 'https://versus.com/cn/wireless-earbud/top'
+    {
+        id: 3,
+        name: 'Frontier超级计算机',
+        price: 6000000000,
+        description: '世界首台E级超算，计算能力突破百亿亿次',
+        link: 'https://www.ornl.gov/frontier'
+    },
+    {
+        id: 4,
+        name: 'RS-28"萨尔马特"',
+        price: 12000000000,
+        description: '洲际弹道导弹，射程超过18000公里',
+        link: 'https://missilethreat.csis.org/missile/rs-28-sarmat/'
+    },
+    {
+        id: 5,
+        name: '尼米兹级航母群',
+        price: 35000000000,
+        description: '核动力航空母舰，搭载80+架各型舰载机',
+        link: 'https://www.navy.mil/Resources/Fact-Files/Display-FactFiles/Article/2169795/aircraft-carriers-cvn/'
+    },
+    {
+        id: 6,
+        name: 'High NA EUV光刻机',
+        price: 52000000000,
+        description: '先进半导体制造设备，可制造2nm以下芯片',
+        link: 'https://www.asml.com/en/products/euv-lithography-systems'
     }
 ];
 
@@ -35,22 +56,22 @@ function renderProducts(productsToRender = products) {
         productCard.innerHTML = `
             <a href="${product.link}" target="_blank">
                 <h3>${product.name}</h3>
+                <p class="description">${product.description}</p>
+                <div class="price">¥${product.price}</div>
             </a>
-            <p class="description">${product.description}</p>
-            <p class="price">¥${product.price}</p>
             <button onclick="addToCart(${product.id})">
                 <i class="fas fa-shopping-cart"></i> 加入购物车
             </button>
         `;
-        
+
         productContainer.appendChild(productCard);
     });
 }
 
 function searchProducts() {
     const searchTerm = document.getElementById('search-input').value.toLowerCase();
-    const filteredProducts = products.filter(product => 
-        product.name.toLowerCase().includes(searchTerm) || 
+    const filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(searchTerm) ||
         product.description.toLowerCase().includes(searchTerm)
     );
     renderProducts(filteredProducts);
@@ -91,7 +112,7 @@ function updateCart() {
 
     const cartItems = document.getElementById('cart-items');
     cartItems.innerHTML = '';
-    
+
     cart.forEach(item => {
         const itemElement = document.createElement('div');
         itemElement.classList.add('cart-item');
@@ -137,7 +158,7 @@ function checkout() {
 
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
-    
+
     document.getElementById('search-input').addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             searchProducts();
