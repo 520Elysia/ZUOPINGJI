@@ -1,0 +1,350 @@
+/* 全局变量定义 */
+:root {
+    --primary-color: #9d4edd;
+    /* 主紫色 */
+    --secondary-color: #ffffff;
+    --text-color: #333333;
+    --gradient: linear-gradient(135deg, #9d4edd, #ff66b2);
+    /* 紫到粉的渐变 */
+    --accent-color: #ff66b2;
+    /* 亮粉色强调 */
+    --accent-hover: #ff1a8c;
+    /* 深粉色悬停 */
+}
+
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background: var(--gradient);
+    /* 使用新的渐变背景 */
+    min-height: 100vh;
+    color: #fff;
+    position: relative;
+    /* 为背景遮罩添加定位上下文 */
+}
+
+/* 添加背景遮罩层 */
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://source.unsplash.com/random/1920x1080/?pattern');
+    background-size: cover;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+/* 导航栏样式 */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav .logo a {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+/* 搜索栏样式 */
+.navigation-bar {
+    margin-top: 20px;
+    /* 减小搜索栏的上边距 */
+    padding: 1rem;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    color: #fff;
+}
+
+search-bar button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* 商品展示区网格布局 */
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 三列等宽布局 */
+    grid-template-rows: repeat(2, 1fr);
+    /* 两行等高布局 */
+    gap: 20px;
+    /* 网格间距 */
+    padding: 20px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1200px;
+    /* 最大宽度限制 */
+}
+
+@media (max-width: 768px) {
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+        /* 在移动端改为2列 */
+        grid-template-rows: repeat(3, 1fr);
+        /* 3行 */
+    }
+}
+
+@media (max-width: 480px) {
+    .products {
+        grid-template-columns: 1fr;
+        /* 在更小的屏幕上改为1列 */
+        grid-template-rows: repeat(6, 1fr);
+        /* 6行 */
+    }
+}
+
+/* 购物车样式 */
+.cart-icon {
+    position: relative;
+}
+
+#cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+.cart-icon button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 1rem;
+}
+
+/* 购物车模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* 居中定位 */
+    background: rgba(157, 78, 221, 0.2);
+    /* 使用紫色作为半透明背景 */
+    /* 毛玻璃效果 */
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    color: white;
+    max-height: 80vh;
+    /* 最大高度为视口高度的80% */
+    overflow-y: auto;
+    /* 内容过多时显示滚动条 */
+}
+
+/* 页脚样式 */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    margin-top: auto;
+    /* 确保footer始终在底部 */
+    position: relative;
+    /* 改为相对定位 */
+    width: 100%;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+
+    .cart-icon {
+        margin-left: auto;
+    }
+}
+
+/* 动画效果 */
+.animate__animated {
+    animation-duration: 1s;
+}
+
+/* 商品卡片样式 */
+.product-card {
+    background: rgba(157, 78, 221, 0.2);
+    /* 使用紫色作为半透明背景 */
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.product-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    margin-bottom: 15px;
+    transition: transform 0.2s;
+}
+
+.product-card a:hover {
+    transform: translateY(-2px);
+}
+
+.product-card h3 {
+    color: #fff;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.product-card p {
+    color: #ddd;
+    margin-bottom: 15px;
+}
+
+.product-card .price {
+    color: var(--accent-color);
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.product-card button {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.product-card button:hover {
+    background: var(--accent-hover);
+}
+
+/* 主要内容区域调整 */
+main {
+    padding-top: 100px;
+    /* 增加顶部内边距 */
+    min-height: calc(100vh - 60px);
+    /* 确保main区域填满视口高度 */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    nav {
+        padding: 0.5rem;
+    }
+
+    .product-card {
+        min-height: auto;
+        padding: 20px;
+    }
+
+    .search-bar {
+        width: 95%;
+    }
+
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+        margin: 20px auto;
+    }
+
+    .cart-icon button span {
+        display: none;
+        /* 隐藏"购物车"文字，只显示图标 */
+    }
+
+    #cart-count {
+        right: -5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card h3 {
+        font-size: 1.2em;
+    }
+
+    .product-card .price {
+        font-size: 1em;
+    }
+}

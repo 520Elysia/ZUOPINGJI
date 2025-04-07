@@ -1,0 +1,222 @@
+/* 全局变量声明 */
+:root {
+    --primary-color: #9d4edd;
+    /* 主紫色 */
+    --secondary-color: #ff66b2;
+    /* 粉色 */
+    --text-color: #ffffff;
+    /* 文字颜色 */
+    --gradient: linear-gradient(135deg, #9d4edd, #ff66b2);
+    /* 紫到粉的渐变 */
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    background: var(--gradient);
+    position: relative;
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://source.unsplash.com/random/1920x1080/?pattern');
+    background-size: cover;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+/* 导航栏样式 */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.logo a {
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+}
+
+nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+nav ul a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul a:hover {
+    color: var(--primary-color);
+}
+
+/* 主要内容区域 */
+main {
+    padding-top: 100px;
+    min-height: calc(100vh - 160px);
+}
+
+/* 表单容器样式 */
+.form-section {
+    max-width: 800px;
+    /* 限制最大宽度 */
+    margin: 0 auto;
+    /* 水平居中 */
+    padding: 2rem;
+    /* 内边距 */
+}
+
+/* 毛玻璃效果容器 */
+.glass-effect {
+    background: rgba(157, 78, 221, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    color: var(--text-color);
+    padding: 3rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    /* 阴影效果 */
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.section-description {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+}
+
+/* 表单样式 */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(41, 98, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.submit-btn {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(157, 78, 221, 0.3);
+}
+
+/* 页脚样式 */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: white;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+
+    .glass-effect {
+        padding: 2rem;
+        margin: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .form-section {
+        padding: 1rem;
+    }
+
+    .glass-effect {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    input,
+    textarea {
+        padding: 0.8rem;
+    }
+
+    .submit-btn {
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .section-description {
+        font-size: 0.9rem;
+    }
+}

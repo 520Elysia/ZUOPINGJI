@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>互动表单</title>
+    <link rel="stylesheet" href="333.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+    <header>
+        <nav class="animate__animated animate__fadeInDown">
+            <div class="logo">
+                <a href="index.html"><i class="fas fa-code"></i></a>
+            </div>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html#projects">项目</a></li>
+                <li><a href="index.html#about">关于我</a></li>
+                <li><a href="index.html#contact">联系方式</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-section animate__animated animate__fadeIn">
+            <div class="container glass-effect">
+                <h1 class="section-title">联系我们</h1>
+                <p class="section-description">请留下您的宝贵意见</p>
+                <form id="contactForm" class="form-wrapper">
+                    <h2>联系我们</h2>
+                    <div class="form-group">
+                        <label for="name">姓名:</label>
+                        <input type="text" id="name" name="name" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">邮箱:</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">电话:</label>
+                        <input type="tel" id="phone" name="phone" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">留言:</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <button type="submit" class="submit-btn">提交</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="animate__animated animate__fadeInUp">
+        <p>&copy; 2025 曾祥军. 保留所有权利。</p>
+    </footer>
+    <script src="kaiwen.js"></script>
+</body>
+
+</html>
